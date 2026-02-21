@@ -3,30 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIVYA-DATA | AI Life Timeline Oracle</title>
-    <!-- Chart.js CDN -->
+    <title>Divya-Kala | AI Vedic Destiny Weaver</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --blush: #FCE7F3;
             --lilac: #EDE9FE;
             --sky: #E0F2FE;
+            --gold: #FDE68A;
             --cream: #FFFDFB;
-            --text-dark: #2D3748;
-            --accent-pink: #F472B6;
-            --accent-purple: #A78BFA;
-            --glass: rgba(255, 255, 255, 0.6);
+            --text-dark: #1A202C;
+            --accent-pink: #EC4899;
+            --accent-purple: #8B5CF6;
+            --glass: rgba(255, 255, 255, 0.75);
             --gradient: linear-gradient(135deg, #FCE7F3 0%, #EDE9FE 50%, #E0F2FE 100%);
-            --btn-gradient: linear-gradient(90deg, #F472B6, #A78BFA);
+            --btn-gradient: linear-gradient(90deg, #D946EF, #8B5CF6);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -37,225 +32,156 @@
             line-height: 1.6;
         }
 
-        /* Animated Cosmic Background */
+        /* Mythological Background */
         .bg-glow {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
             background: var(--gradient);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .mandala-bg {
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: -1;
+            animation: rotateMandala 100s linear infinite;
         }
+
+        @keyframes rotateMandala { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
         .orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(80px);
+            filter: blur(100px);
             z-index: -1;
-            opacity: 0.6;
-            animation: float 20s infinite alternate;
+            opacity: 0.5;
+            animation: float 25s infinite alternate;
         }
+        .orb-1 { width: 600px; height: 600px; background: var(--blush); top: -200px; right: -100px; }
+        .orb-2 { width: 500px; height: 500px; background: var(--sky); bottom: -100px; left: -150px; }
 
-        .orb-1 { width: 400px; height: 400px; background: var(--blush); top: -100px; right: -100px; }
-        .orb-2 { width: 300px; height: 300px; background: var(--sky); bottom: -50px; left: -50px; animation-delay: -5s; }
+        @keyframes float { 0% { transform: translate(0, 0); } 100% { transform: translate(80px, 120px); } }
 
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 80px); }
-        }
-
-        /* Layout */
-        header {
-            padding: 2rem;
-            text-align: center;
-        }
-
+        header { padding: 3rem 1rem; text-align: center; }
         .brand {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            letter-spacing: 2px;
-            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            font-size: 1.2rem;
             color: var(--accent-purple);
-            margin-bottom: 0.5rem;
+            text-transform: uppercase;
         }
+        .devanagari { font-family: 'Noto Serif Devanagari', serif; font-size: 1.4rem; color: var(--accent-pink); margin-top: 0.5rem; }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 1.5rem 5rem;
-        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem 5rem; }
 
-        /* Glass Cards */
         .glass-card {
             background: var(--glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 24px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.03);
             margin-bottom: 2rem;
-            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #4A5568;
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #1A202C, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: #718096;
-            margin-bottom: 2rem;
-        }
+        .subtitle { font-size: 1.2rem; color: #4A5568; margin-bottom: 2.5rem; max-width: 600px; }
 
         /* Form Styling */
-        .input-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: #4A5568;
-        }
-
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+        .input-group { text-align: left; }
+        label { display: block; font-weight: 800; margin-bottom: 0.6rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-purple); }
         input {
-            width: 100%;
-            padding: 1rem;
-            border-radius: 12px;
-            border: 2px solid transparent;
-            background: white;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            width: 100%; padding: 1.2rem; border-radius: 16px; border: 2px solid white;
+            background: rgba(255, 255, 255, 0.8); font-family: inherit; font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        input:focus {
-            outline: none;
-            border-color: var(--accent-purple);
-            box-shadow: 0 0 0 4px var(--lilac);
-        }
+        input:focus { outline: none; border-color: var(--accent-pink); box-shadow: 0 10px 20px rgba(236, 72, 153, 0.1); }
 
         .cta-btn {
-            width: 100%;
-            padding: 1.2rem;
-            border: none;
-            border-radius: 14px;
-            background: var(--btn-gradient);
-            color: white;
-            font-weight: 800;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 10px 20px rgba(244, 114, 182, 0.3);
-            margin-top: 1rem;
+            width: 100%; padding: 1.4rem; border: none; border-radius: 20px;
+            background: var(--btn-gradient); color: white; font-weight: 800; font-size: 1.2rem;
+            cursor: pointer; transition: all 0.4s ease;
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .cta-btn:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4); }
+
+        /* Results Display */
+        #result-area { display: none; animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+        .stat-badge {
+            display: inline-block; padding: 0.5rem 1.2rem; border-radius: 100px;
+            background: white; font-weight: 800; font-size: 0.75rem;
+            text-transform: uppercase; color: var(--accent-pink); margin-bottom: 1rem;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 25px rgba(244, 114, 182, 0.4);
-        }
+        .chart-container { height: 400px; margin: 3rem 0; background: rgba(255,255,255,0.3); border-radius: 24px; padding: 1rem; }
 
-        .cta-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Results Area */
-        #result-area {
-            display: none;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .chart-container {
-            position: relative;
-            height: 300px;
-            margin: 2rem 0;
-        }
-
+        /* Detailed Timeline Cards */
         .timeline-scroll {
-            overflow-x: auto;
-            padding: 1rem 0;
-            display: flex;
-            gap: 1.5rem;
-            scroll-behavior: smooth;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem; margin-top: 2rem;
         }
 
         .phase-card {
-            min-width: 280px;
-            background: white;
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border-top: 4px solid var(--accent-purple);
+            background: white; border-radius: 24px; padding: 2rem;
+            border-left: 6px solid var(--accent-purple); transition: all 0.3s ease;
+            position: relative;
+        }
+        .phase-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .phase-card .age-marker { font-weight: 800; color: var(--accent-pink); font-size: 1.1rem; }
+        .phase-card .sanskrit-title { font-family: 'Noto Serif Devanagari', serif; font-size: 1.2rem; color: #718096; margin: 0.5rem 0; }
+        .phase-card h4 { font-size: 1.4rem; margin-bottom: 1rem; font-family: 'Playfair Display', serif; }
+        .insight-tag {
+            display: inline-block; font-size: 0.7rem; font-weight: 800; background: var(--sky);
+            padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 10px;
         }
 
-        .phase-card.career { border-top-color: var(--sky); }
-        .phase-card.love { border-top-color: var(--blush); }
-        .phase-card.spirit { border-top-color: var(--lilac); }
-
-        .phase-age {
-            font-weight: 800;
-            color: var(--accent-purple);
-            font-size: 1.2rem;
-        }
-
-        .phase-title {
-            font-weight: 700;
-            margin: 0.5rem 0;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .phase-desc {
-            font-size: 0.9rem;
-            color: #718096;
-        }
-
-        /* Loading Spinner */
+        /* Loading Overlay */
         #loader {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            padding: 3rem;
+            display: none; flex-direction: column; align-items: center; justify-content: center;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--cream); z-index: 100;
+        }
+        .sacred-loader {
+            width: 100px; height: 100px; border: 2px solid var(--accent-purple);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 3s linear infinite;
+        }
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(0); }
+            50% { border-radius: 50%; transform: rotate(180deg); }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(360deg); }
         }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid var(--blush);
-            border-top: 5px solid var(--accent-purple);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .glass-card { padding: 1.5rem; }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .input-grid { grid-template-columns: 1fr; }
+            .glass-card { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
@@ -263,192 +189,230 @@
     <div class="bg-glow"></div>
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
+    <svg class="mandala-bg" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 2"/>
+        <path d="M50 5 L55 45 L95 50 L55 55 L50 95 L45 55 L5 50 L45 45 Z" fill="none" stroke="currentColor" stroke-width="0.5"/>
+    </svg>
 
     <header>
-        <div class="brand">DIVYA-DATA</div>
+        <div class="brand">DIVYA-DATA presents</div>
+        <div class="devanagari">दिव्य-काल</div>
+        <div class="brand" style="font-size: 0.8rem; margin-top: 0.5rem;">The Weaver of Destiny</div>
     </header>
 
     <div class="container">
-        <!-- Input Section -->
         <div id="input-section" class="glass-card">
-            <h1>AI Life Timeline Oracle</h1>
-            <p class="subtitle">Enter your birth essence to reveal the tapestry of your future destiny.</p>
+            <h1>Reveal Your Cosmic Blueprint</h1>
+            <p class="subtitle">Using the ancient logic of Kala-Chakra and modern AI, we map the 80-year journey of your soul through time.</p>
             
-            <div class="input-group">
-                <label for="userName">Soul Name</label>
-                <input type="text" id="userName" placeholder="Your name..." required>
+            <div class="input-grid">
+                <div class="input-group">
+                    <label>Nama (Your Name)</label>
+                    <input type="text" id="userName" placeholder="Seeker's name..." required>
+                </div>
+                <div class="input-group">
+                    <label>Janma (Birth Date)</label>
+                    <input type="date" id="birthDate" required>
+                </div>
             </div>
-
-            <div class="input-group">
-                <label for="birthDate">Birth Date</label>
-                <input type="date" id="birthDate" required>
-            </div>
-
-            <div class="input-group">
-                <label for="birthTime">Birth Time (Optional)</label>
-                <input type="time" id="birthTime" value="12:00">
-            </div>
-
-            <button class="cta-btn" onclick="generateOracle()">Calculate My Destiny</button>
+            <button class="cta-btn" onclick="unveilDestiny()">Unveil My Journey</button>
         </div>
 
-        <!-- Loading -->
+        <!-- Sacred Loader -->
         <div id="loader">
-            <div class="spinner"></div>
-            <p style="margin-top: 1rem; color: var(--accent-purple); font-weight: 600;">Consulting the stars...</p>
+            <div class="sacred-loader"></div>
+            <p style="margin-top: 2rem; letter-spacing: 3px; font-weight: 300; text-transform: uppercase;">Decoding the Karmic Thread...</p>
         </div>
 
         <!-- Result Section -->
         <div id="result-area">
             <div class="glass-card">
-                <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 0.5rem;">Welcome, <span id="display-name" style="color: var(--accent-pink);"></span></h2>
-                <p id="summary-text" style="color: #718096; font-size: 0.95rem; margin-bottom: 2rem;"></p>
+                <div class="stat-badge">Karmic Resonance: Active</div>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">Pranama, <span id="display-name" style="color: var(--accent-purple);"></span></h2>
+                <div id="soul-archetype" style="margin-top: 1rem; font-weight: 800; color: #718096; font-size: 0.9rem;"></div>
+                <p id="epic-summary" style="margin: 1.5rem 0; font-size: 1.1rem; font-style: italic; color: #4A5568;"></p>
 
                 <div class="chart-container">
-                    <canvas id="lifeChart"></canvas>
+                    <canvas id="destinyChart"></canvas>
                 </div>
 
-                <h3 style="margin: 2rem 0 1rem; font-family: 'Playfair Display', serif;">Your Life Chapters (Age 0–80)</h3>
-                <div class="timeline-scroll" id="timeline-container">
-                    <!-- Dynamic Content -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin: 3rem 0 1rem;">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem;">The Ashtaka-Kala (8 Chapters)</h3>
+                </div>
+
+                <div class="timeline-scroll" id="chapter-grid">
+                    <!-- Chapters Injected Here -->
                 </div>
             </div>
 
-            <button class="cta-btn" style="background: white; color: var(--accent-purple); border: 2px solid var(--lilac);" onclick="resetOracle()">Recalculate Another Path</button>
+            <div style="text-align: center;">
+                <button class="cta-btn" style="background: white; color: var(--accent-purple); width: auto; padding: 1rem 3rem;" onclick="location.reload()">Return to Present</button>
+            </div>
         </div>
     </div>
 
     <script>
-        let chartInstance = null;
+        let chartObj = null;
 
-        function generateOracle() {
+        const SANSKRIT_CONCEPTS = {
+            purusharthas: ["Dharma (Duty)", "Artha (Prosperity)", "Kama (Desire)", "Moksha (Liberation)"],
+            vibes: ["Shanti (Peace)", "Virya (Vitality)", "Jnana (Wisdom)", "Karma (Action)"],
+            archetypes: ["The Solar Pathweaver", "The Lunar Emotionalist", "The Mercury Intellect", "The Jupiter Sage", "The Venusian Creative"]
+        };
+
+        function unveilDestiny() {
             const name = document.getElementById('userName').value;
             const bDay = document.getElementById('birthDate').value;
 
-            if (!name || !bDay) {
-                alert("Please share your birth essence (Name & Date) with us.");
-                return;
-            }
+            if(!name || !bDay) return;
 
-            // Show Loader
-            document.getElementById('input-section').style.display = 'none';
+            document.getElementById('input-section').style.opacity = '0.3';
             document.getElementById('loader').style.display = 'flex';
 
-            // Simulate AI Processing
             setTimeout(() => {
                 document.getElementById('loader').style.display = 'none';
-                renderResults(name, bDay);
-            }, 2000);
+                document.getElementById('input-section').style.display = 'none';
+                processKarmicData(name, bDay);
+            }, 3000);
         }
 
-        function renderResults(name, bDay) {
+        function processKarmicData(name, bDay) {
+            const birth = new Date(bDay);
+            const seed = (birth.getDate() * birth.getMonth()) + birth.getFullYear();
+            
+            // Logic: Accuracy boost using real birth math
+            const archetype = SANSKRIT_CONCEPTS.archetypes[seed % 5];
+            const primaryGoal = SANSKRIT_CONCEPTS.purusharthas[seed % 4];
+            
             document.getElementById('result-area').style.display = 'block';
             document.getElementById('display-name').innerText = name;
+            document.getElementById('soul-archetype').innerText = `ARCHETYPE: ${archetype} | PRIMARY AIM: ${primaryGoal}`;
             
-            const birthDate = new Date(bDay);
-            const seed = birthDate.getDate() + birthDate.getMonth();
-            
-            const lifeData = calculateLifeMetrics(seed);
-            const chapters = generateChapters(seed);
+            document.getElementById('epic-summary').innerText = `Your thread of life is woven with the essence of ${primaryGoal}. The stars indicate a rare alignment where your personal willpower (Purushartha) meets the divine timeline (Kala). Prepare for a journey of deep transformation.`;
 
-            document.getElementById('summary-text').innerText = `Based on your birth vibration, your journey is defined by a deep search for ${lifeData.soulPurpose}. You are currently entering a phase of ${lifeData.currentVibe}.`;
-
-            renderChart(lifeData.vibrationLevels);
-            renderTimeline(chapters);
+            const points = generateVibrationalPoints(seed);
+            renderDestinyChart(points);
+            renderDetailedChapters(seed);
         }
 
-        function calculateLifeMetrics(seed) {
-            // Semi-deterministic logic based on birth date (not purely random)
-            const purposes = ["Emotional Mastery", "Creative Expression", "Ancestral Healing", "Spiritual Wisdom", "Leadership & Impact"];
-            const vibes = ["Expansion", "Introspection", "Karmic Resolution", "Manifestation"];
-            
-            // Generate synthetic 80-year data curve
-            const points = [];
-            for (let i = 0; i <= 80; i += 5) {
-                // Sinusoidal logic + birth seed offset
-                let val = 50 + 30 * Math.sin((i / 10) + (seed / 5)) + (Math.random() * 10);
-                points.push(Math.round(val));
+        function generateVibrationalPoints(seed) {
+            // Generate 17 points for every 5 years (0 to 80)
+            const pts = [];
+            for(let i=0; i<=16; i++) {
+                // Vedic Cycle Math: 12-year Jupiter cycles + 29-year Saturn cycles
+                const age = i * 5;
+                const jupiterEffect = Math.sin((age + seed) / 12 * Math.PI);
+                const saturnEffect = Math.cos((age - seed) / 29 * Math.PI);
+                let val = 50 + (25 * jupiterEffect) + (15 * saturnEffect);
+                pts.push(Math.round(Math.min(95, Math.max(10, val))));
             }
-
-            return {
-                soulPurpose: purposes[seed % purposes.length],
-                currentVibe: vibes[seed % vibes.length],
-                vibrationLevels: points
-            };
+            return pts;
         }
 
-        function generateChapters(seed) {
-            // Logic-based windows using age cycle philosophy
-            const windows = [
-                { age: "0-14", title: "Roots & Identity", desc: "The formation of your emotional core. Family dynamics shape your subconscious map.", type: "spirit" },
-                { age: `${18 + (seed % 7)}-${24 + (seed % 5)}`, title: "The Great Awakening", desc: "A pivotal period for finding your voice and breaking free from ancestral expectations.", type: "love" },
-                { age: `${27 + (seed % 4)}-33`, title: "Saturn's Crucible", desc: "Major career shift or structural change. Hard work now pays off for decades.", type: "career" },
-                { age: `${34 + (seed % 6)}-42`, title: "The Wealth Peak", desc: "Material manifestation and influence. Your peak period for financial accumulation.", type: "career" },
-                { age: `${45 + (seed % 5)}-52`, title: "Heart Resonance", desc: "A window for profound love or reconnection. Emotional maturity reaches its zenith.", type: "love" },
-                { age: "60-70", title: "The Sage Transition", desc: "Turning knowledge into wisdom. Spiritual leadership and teaching others.", type: "spirit" },
-                { age: "75+", title: "Legacy & Ether", desc: "Peaceful reflection and leaving a mark on the collective consciousness.", type: "spirit" }
-            ];
-            return windows;
-        }
+        function renderDestinyChart(pts) {
+            const ctx = document.getElementById('destinyChart').getContext('2d');
+            const grad = ctx.createLinearGradient(0, 0, 0, 400);
+            grad.addColorStop(0, 'rgba(139, 92, 246, 0.4)');
+            grad.addColorStop(1, 'rgba(236, 72, 153, 0)');
 
-        function renderChart(dataPoints) {
-            const ctx = document.getElementById('lifeChart').getContext('2d');
+            if(chartObj) chartObj.destroy();
             
-            if (chartInstance) chartInstance.destroy();
-
-            chartInstance = new Chart(ctx, {
+            chartObj = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80],
+                    labels: Array.from({length: 17}, (_, i) => i * 5),
                     datasets: [{
-                        label: 'Destiny Vibration',
-                        data: dataPoints,
-                        borderColor: '#A78BFA',
-                        backgroundColor: 'rgba(167, 139, 250, 0.1)',
+                        label: 'Prana (Life Force)',
+                        data: pts,
+                        borderColor: '#8B5CF6',
+                        backgroundColor: grad,
                         fill: true,
-                        tension: 0.4,
-                        borderWidth: 3,
-                        pointRadius: 4,
-                        pointBackgroundColor: '#F472B6'
+                        tension: 0.5,
+                        pointRadius: 6,
+                        pointHoverRadius: 10,
+                        pointBackgroundColor: '#FFF',
+                        pointBorderColor: '#EC4899',
+                        borderWidth: 4
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false }
-                    },
+                    plugins: { legend: { display: false } },
                     scales: {
                         y: { display: false, min: 0, max: 100 },
                         x: { 
-                            grid: { display: false },
-                            ticks: { color: '#A0AEC0', font: { family: 'Plus Jakarta Sans' } }
+                            grid: { color: 'rgba(0,0,0,0.03)' },
+                            ticks: { font: { family: 'Plus Jakarta Sans', weight: 'bold' }, color: '#8B5CF6' }
                         }
                     }
                 }
             });
         }
 
-        function renderTimeline(chapters) {
-            const container = document.getElementById('timeline-container');
-            container.innerHTML = '';
-            
-            chapters.forEach(ch => {
-                const card = document.createElement('div');
-                card.className = `phase-card ${ch.type}`;
-                card.innerHTML = `
-                    <div class="phase-age">Age ${ch.age}</div>
-                    <div class="phase-title">${ch.title}</div>
-                    <p class="phase-desc">${ch.desc}</p>
-                `;
-                container.appendChild(card);
-            });
-        }
+        function renderDetailedChapters(seed) {
+            const grid = document.getElementById('chapter-grid');
+            grid.innerHTML = '';
 
-        function resetOracle() {
-            document.getElementById('result-area').style.display = 'none';
-            document.getElementById('input-section').style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const data = [
+                { 
+                    age: "0 - 12", 
+                    sanskrit: "बाल्य काल (Balya Kala)", 
+                    title: "The Seed of Sanskara", 
+                    tags: ["Dharma", "Origins"],
+                    desc: "Your early years were defined by the absorption of family karma. A significant emotional imprint was left around age " + (seed % 7 + 4) + "."
+                },
+                { 
+                    age: "18 - 26", 
+                    sanskrit: "युवा अवस्था (Yuva Avastha)", 
+                    title: "The Fire of Ambition", 
+                    tags: ["Kama", "Desire"],
+                    desc: "The period of Rahu-influence. You will seek to break boundaries. Expect a major breakthrough in love or creative identity at age " + (22 + seed % 4) + "."
+                },
+                { 
+                    age: "28 - 35", 
+                    sanskrit: "कर्म क्षेत्र (Karma Kshetra)", 
+                    title: "The Saturnine Shift", 
+                    tags: ["Artha", "Stability"],
+                    desc: "Life demands structure. You transition from a seeker to a builder. Financial foundations are laid through intense discipline."
+                },
+                { 
+                    age: "36 - 48", 
+                    sanskrit: "मध्यम मार्ग (Madhyama Marga)", 
+                    title: "The Wealth Apex", 
+                    tags: ["Legacy", "Impact"],
+                    desc: "Your Jupiter Mahadasha logic suggests a massive peak in social influence. This is the 'Golden Window' where your previous efforts multiply."
+                },
+                { 
+                    age: "50 - 62", 
+                    sanskrit: "प्रज्ञा उदय (Prajna Udaya)", 
+                    title: "The Spiritual Awakening", 
+                    tags: ["Moksha", "Wisdom"],
+                    desc: "The focus shifts from the outer world to the inner landscape. You may become a mentor or discover a deep esoteric interest."
+                },
+                { 
+                    age: "65 - 80", 
+                    sanskrit: "अमृत काल (Amrita Kala)", 
+                    title: "The Final Weaver", 
+                    tags: ["Peace", "Legacy"],
+                    desc: "A period of profound 'Shanti'. You reconcile with the past and leave behind a legacy of wisdom for the next generation."
+                }
+            ];
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'phase-card';
+                const tags = item.tags.map(t => `<span class="insight-tag">${t}</span>`).join('');
+                
+                card.innerHTML = `
+                    <div class="age-marker">Age ${item.age}</div>
+                    <div class="sanskrit-title">${item.sanskrit}</div>
+                    <h4>${item.title}</h4>
+                    <div>${tags}</div>
+                    <p style="font-size: 0.95rem; color: #718096;">${item.desc}</p>
+                `;
+                grid.appendChild(card);
+            });
         }
     </script>
 </body>
